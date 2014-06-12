@@ -45,6 +45,11 @@ void worker(void *args, zctx_t *ctx, void *pipe) {
 	while (!zctx_interrupted) {
 		zmsg_t *request = zmsg_recv(worker);
 		
+		/* drop message if its size is less than 2 */
+		if (zmsg_size(request) != 2) {
+			zmsg_destroy(&request);
+			continue;
+		}
 		/* sender id */
 		zframe_t *sender = zmsg_pop(request);
 		
@@ -91,7 +96,7 @@ int main(int argc, char** argv) {
 	
 	/* parse command line options */
 	while ((opt = getopt(argc, argv, "m:b:p:h")) != -1) {
-		switch (opt) {			
+		switch (opt) {
 			case 'm':
 				errno = 0;
 				mashine_number = strtol(optarg, &endptr, 10);
