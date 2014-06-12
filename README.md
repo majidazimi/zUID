@@ -114,6 +114,7 @@ Notes
   - zUID heavily depends on NTP. Least significant 45 bit of a number is timestamp in millisecond. Clock drift can cause duplicate numbers. Be sure to run reliable NTP service on your zUID cluster. on Linux you can run `ntpd` or `chronyd`.
   - There is no authentication/authorization feature in zUID. This will NOT be implemented in the future.
   - If client sends a malformed message(more than one frame, ...) it will be silently discarded. This may be improved in near future.
+  
 License
 ----
 GPL version 3
