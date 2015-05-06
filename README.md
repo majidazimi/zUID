@@ -96,9 +96,15 @@ compile client using `gcc -o client client.c -lczmq -lzmq`. Output will be like:
 
 Installation
 --------------
+Install autotools before. For example on Fedora you need to run:
+```sh
+yum install automake autoconf libtool
+```
+Then clone the repository and compile:
 ```sh
 git clone https://github.com/majidazimi/zUID.git zUID
 cd zUID
+autoreconf -i
 ./configure
 make
 make install
