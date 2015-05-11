@@ -109,6 +109,25 @@ autoreconf -i
 make
 make install
 ```
+If you see the following error during `./configure` step:
+```sh
+checking for ZMQ... no
+configure: error: Package requirements (libzmq) were not met:
+
+No package 'libzmq' found
+
+Consider adjusting the PKG_CONFIG_PATH environment variable if you
+installed software in a non-standard prefix.
+
+Alternatively, you may set the environment variables ZMQ_CFLAGS
+and ZMQ_LIBS to avoid the need to call pkg-config.
+See the pkg-config man page for more details.
+```
+then do the following and run `./configure` again:
+```sh
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+```
+The above command is for my computer which is running fedora. You may change it based on your OS.
 
 Dependencies
 --------------
