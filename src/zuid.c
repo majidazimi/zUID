@@ -67,7 +67,7 @@ void worker(void *args, zctx_t *ctx, void *pipe) {
 			for (i = 0; i < n; i++) {
 				gettimeofday(&tp, NULL);
 			
-				zmsg_addstr(response, "%ld", ((mashine_number << 59) | (thread_number << 56) | (auto_increment << 45) | (tp.tv_sec << 10) | (tp.tv_usec / 1000)));
+				zmsg_addstrf(response, "%ld", ((mashine_number << 59) | (thread_number << 56) | (auto_increment << 45) | (tp.tv_sec << 10) | (tp.tv_usec / 1000)));
 			
 				auto_increment++;
 				if (auto_increment == 2048) {
